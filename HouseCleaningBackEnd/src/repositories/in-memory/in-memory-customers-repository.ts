@@ -14,6 +14,11 @@ export class InMemoryCustomersRepository implements CustomersRepository {
 
         return customer;
     }
+
+    async findManyCustomers() {
+        return this.items;
+    }
+
     async create(data: Prisma.CustomerCreateInput) {
         const customer = {
             id: randomUUID(),

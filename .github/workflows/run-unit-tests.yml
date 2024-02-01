@@ -15,6 +15,6 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - run: npm ci
+      - run: cd HouseCleaningBackEnd && npm ci
 
-      - run: npm run test
+      - run: cd HouseCleaningBackEnd && npm run test

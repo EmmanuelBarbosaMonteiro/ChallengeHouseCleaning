@@ -13,6 +13,12 @@ export class PrismaCustomersRepository implements CustomersRepository {
         return customer;
     }
 
+    async findManyCustomers() {
+        const customers = await prisma.customer.findMany();
+
+        return customers;
+    }
+
     async create(data: Prisma.CustomerCreateInput) {
         const customer = await prisma.customer.create({
             data,
