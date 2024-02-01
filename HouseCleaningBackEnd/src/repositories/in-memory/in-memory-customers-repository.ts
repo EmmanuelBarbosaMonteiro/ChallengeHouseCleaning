@@ -23,6 +23,10 @@ export class InMemoryCustomersRepository implements CustomersRepository {
         return this.items.filter((item) => item.name.toLowerCase().includes(query.toLowerCase()));
     }
 
+    async searchManyByEmail(query: string) {
+        return this.items.filter((item) => item.email.toLowerCase().includes(query.toLowerCase()));
+    }
+
     async create(data: Prisma.CustomerCreateInput) {
         const customer = {
             id: randomUUID(),

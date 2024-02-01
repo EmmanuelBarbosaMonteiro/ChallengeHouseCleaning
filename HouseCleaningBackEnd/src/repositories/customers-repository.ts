@@ -4,5 +4,6 @@ export interface CustomersRepository {
   findByEmail(email: string): Promise<Customer | null>
   findManyCustomers(): Promise<Customer[]>
   searchManyByName(query: string): Promise<Customer[]>
+  searchManyByEmail(query: string): Promise<Customer[]>
   create(data: Prisma.CustomerCreateInput): Promise<Customer>
 }

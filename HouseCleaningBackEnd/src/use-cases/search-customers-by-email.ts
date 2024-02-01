@@ -1,21 +1,21 @@
 import { CustomersRepository } from '@/repositories/customers-repository';
 import { Customer } from '@prisma/client';
 
-interface SearchCustomerUseCaseRequest {
+interface SearchCustomersByEmailUseCaseRequest {
   query: string
 }
 
-interface SearchCustomerUseCaseResponse {
+interface SearchCustomersByEmailUseCaseResponse {
   customers: Customer[]
 }
 
-export class SearchCustomerUseCase {
+export class SearchCustomersByEmailUseCase {
     constructor(private customersRepository: CustomersRepository) {}
 
     async execute({
         query,
-    }: SearchCustomerUseCaseRequest): Promise<SearchCustomerUseCaseResponse> {
-        const customers = await this.customersRepository.searchManyByName(query);
+    }: SearchCustomersByEmailUseCaseRequest): Promise<SearchCustomersByEmailUseCaseResponse> {
+        const customers = await this.customersRepository.searchManyByEmail(query);
 
         return {
             customers,

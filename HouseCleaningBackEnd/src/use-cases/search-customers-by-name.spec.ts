@@ -1,17 +1,17 @@
 import { InMemoryCustomersRepository } from '@/repositories/in-memory/in-memory-customers-repository';
 import { expect, describe, it, beforeEach } from 'vitest';
-import { SearchCustomerUseCase } from './search-customers';
+import { SearchCustomersByNameUseCase } from './search-customers-by-name';
 
 let customersRepository: InMemoryCustomersRepository;
-let sut: SearchCustomerUseCase;
+let sut: SearchCustomersByNameUseCase;
 
-describe('Search Customers Use Case', () => {
+describe('Search Customers By Name Use Case', () => {
     beforeEach(async () => {
         customersRepository = new InMemoryCustomersRepository;
-        sut = new SearchCustomerUseCase(customersRepository);
+        sut = new SearchCustomersByNameUseCase(customersRepository);
     });
 
-    it('should be able to search for customer', async () => {
+    it('should be able to search customers by name', async () => {
         await customersRepository.create({
             name: 'Jhon Doe',
             email: 'jhondoe@example.com',
