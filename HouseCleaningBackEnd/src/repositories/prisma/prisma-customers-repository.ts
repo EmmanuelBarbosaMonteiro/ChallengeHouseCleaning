@@ -19,6 +19,18 @@ export class PrismaCustomersRepository implements CustomersRepository {
         return customers;
     }
 
+    async searchManyByName(query: string) {
+        const customers = await prisma.customer.findMany({
+            where: {
+                name: {
+                    contains: query.toLowerCase()
+                }
+            }
+        });
+
+        return customers;
+    }
+
     async create(data: Prisma.CustomerCreateInput) {
         const customer = await prisma.customer.create({
             data,
