@@ -6,7 +6,7 @@ interface SearchCustomersByNameUseCaseRequest {
 }
 
 interface SearchCustomersByNameUseCaseResponse {
-  customers: Customer[]
+    customers: Customer[]
 }
 
 export class SearchCustomersByNameUseCase {
@@ -15,6 +15,12 @@ export class SearchCustomersByNameUseCase {
     async execute({
         query,
     }: SearchCustomersByNameUseCaseRequest): Promise<SearchCustomersByNameUseCaseResponse> {
+        if (!query.trim()) {
+            return {
+                customers: [],
+            };
+        }
+    
         const customers = await this.customersRepository.searchManyByName(query);
 
         return {

@@ -15,6 +15,12 @@ export class SearchCustomersByEmailUseCase {
     async execute({
         query,
     }: SearchCustomersByEmailUseCaseRequest): Promise<SearchCustomersByEmailUseCaseResponse> {
+        if (!query.trim()) {
+            return {
+                customers: [],
+            };
+        }
+
         const customers = await this.customersRepository.searchManyByEmail(query);
 
         return {

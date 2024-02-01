@@ -23,7 +23,8 @@ export class PrismaCustomersRepository implements CustomersRepository {
         const customers = await prisma.customer.findMany({
             where: {
                 name: {
-                    contains: query.toLowerCase()
+                    contains: query,
+                    mode: 'insensitive', 
                 }
             }
         });
@@ -35,7 +36,8 @@ export class PrismaCustomersRepository implements CustomersRepository {
         const customers = await prisma.customer.findMany({
             where: {
                 email: {
-                    contains: query.toLowerCase()
+                    contains: query,
+                    mode: 'insensitive',
                 }
             }
         });

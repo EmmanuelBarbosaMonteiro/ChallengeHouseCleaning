@@ -15,6 +15,12 @@ export class SearchCustomersByPhoneUseCase {
     async execute({
         query,
     }: SearchCustomersByPhoneUseCaseRequest): Promise<SearchCustomersByPhoneUseCaseResponse> {
+        if (!query.trim()) {
+            return {
+                customers: [],
+            };
+        }
+
         const customers = await this.customersRepository.searchManyByPhone(query);
 
         return {
