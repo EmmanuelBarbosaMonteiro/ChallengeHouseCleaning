@@ -1,6 +1,6 @@
 import { PrismaCustomersRepository } from '@/repositories/prisma/prisma-customers-repository';
 import { CustomerAlreadyExistsError } from '@/use-cases/errors/customer-already-exists-error';
-import { RegisterCustomerCase } from '@/use-cases/register';
+import { RegisterCustomerUseCase } from '@/use-cases/register';
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { z } from 'zod';
 
@@ -17,9 +17,9 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
 
     try {
         const customersRepository = new PrismaCustomersRepository();
-        const registerCustomerCase = new RegisterCustomerCase(customersRepository);
+        const registerCustomerUseCase = new RegisterCustomerUseCase(customersRepository);
 
-        await registerCustomerCase.execute({
+        await registerCustomerUseCase.execute({
             name,
             email,
             phone,
