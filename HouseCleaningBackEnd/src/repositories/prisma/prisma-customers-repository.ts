@@ -43,6 +43,18 @@ export class PrismaCustomersRepository implements CustomersRepository {
         return customers;
     }
 
+    async searchManyByPhone(query: string) {
+        const customers = await prisma.customer.findMany({
+            where: {
+                phone: {
+                    contains: query
+                }
+            }
+        });
+
+        return customers;
+    }
+
     async create(data: Prisma.CustomerCreateInput) {
         const customer = await prisma.customer.create({
             data,
