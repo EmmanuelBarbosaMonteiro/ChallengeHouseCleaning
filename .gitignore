@@ -1,3 +1,39 @@
 HouseCleaningBackEnd/node_modules
 HouseCleaningBackEnd/build
 HouseCleaningBackEnd/.env
+
+
+# dependencies
+house-cleaning-front-end/node_modules
+house-cleaning-front-end/.pnp
+house-cleaning-front-end/.pnp.js
+house-cleaning-front-end/.yarn/install-state.gz
+
+# testing
+house-cleaning-front-end/coverage
+
+# next.js
+house-cleaning-front-end/.next/
+house-cleaning-front-end/out/
+
+# production
+house-cleaning-front-end/build
+
+# misc
+house-cleaning-front-end/.DS_Store
+house-cleaning-front-end/*.pem
+
+# debug
+house-cleaning-front-end/npm-debug.log*
+house-cleaning-front-end/yarn-debug.log*
+house-cleaning-front-end/yarn-error.log*
+
+# local env files
+house-cleaning-front-end/.env*.local
+
+# vercel
+house-cleaning-front-end/.vercel
+
+# typescript
+house-cleaning-front-end/*.tsbuildinfo
+house-cleaning-front-end/next-env.d.ts
