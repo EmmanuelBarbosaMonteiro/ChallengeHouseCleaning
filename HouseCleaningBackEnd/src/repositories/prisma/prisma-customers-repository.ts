@@ -1,5 +1,5 @@
 import { CustomersRepository } from '../customers-repository';
-import { Prisma } from '@prisma/client';
+import { Customer, Prisma } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 
 export class PrismaCustomersRepository implements CustomersRepository {
@@ -64,4 +64,17 @@ export class PrismaCustomersRepository implements CustomersRepository {
 
         return customer;
     }
+
+    async findShortestRoute() {
+        const query = `
+            SELECT *, 
+                SQRT(POW(coordinate_x - 0, 2) + POW(coordinate_y - 0, 2)) AS distance
+            FROM Customers
+            ORDER BY distance
+        `;
+    
+        const sortedItems = await prisma.$queryRaw<Customer[]>(Prisma.sql([query]));
+        return sortedItems;
+    }
+    
 }

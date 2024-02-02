@@ -7,4 +7,5 @@ export interface CustomersRepository {
   searchManyByEmail(query: string): Promise<Customer[]>
   searchManyByPhone(query: string): Promise<Customer[]>
   create(data: Prisma.CustomerCreateInput): Promise<Customer>
+  findShortestRoute(): Promise<Customer[]>
 }

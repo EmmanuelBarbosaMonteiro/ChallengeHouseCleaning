@@ -1,6 +1,7 @@
 import { Customer, Prisma } from '@prisma/client';
 import { CustomersRepository } from '../customers-repository';
 import { randomUUID } from 'crypto';
+import { getDistanceBetweenPoints } from '@/use-cases/utils/calculate-shortest';
 
 export class InMemoryCustomersRepository implements CustomersRepository {
     public items: Customer[] = [];
@@ -44,6 +45,18 @@ export class InMemoryCustomersRepository implements CustomersRepository {
         this.items.push(customer);
 
         return customer;
+    }
+
+    async findShortestRoute() {
+        const sortedItems = [...this.items];
+        
+        sortedItems.sort((a, b) => {
+            const distanceA = getDistanceBetweenPoints(a.coordinate_x.toNumber(), a.coordinate_y.toNumber());
+            const distanceB = getDistanceBetweenPoints(b.coordinate_x.toNumber(), b.coordinate_y.toNumber());
+            return distanceA - distanceB;
+        });
+
+        return sortedItems;
     }
   
 }
