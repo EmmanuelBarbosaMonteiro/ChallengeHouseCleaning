@@ -17,13 +17,14 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
     try {
         const registerCustomerUseCase = makeRegisterUseCase();
 
-        await registerCustomerUseCase.execute({
+        return reply.status(201).send( await registerCustomerUseCase.execute({
             name,
             email,
             phone,
             coordinate_x,
             coordinate_y,
-        });
+        }));
+
     } catch (err) {
         if (err instanceof CustomerAlreadyExistsError) {
             return reply.status(409).send({ messege: err.message });
@@ -31,6 +32,4 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
 
         throw err;
     }
-
-    return reply.status(201).send();
 }

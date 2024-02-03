@@ -1,31 +1,9 @@
-import { api } from '@/services/api'
-import { ContainerTable } from '@/styles/components/customers-table'
-import React, { useState, useEffect } from 'react'
-
-interface Customer {
-  id: string
-  name: string
-  email: string
-  phone: string
-  coordinate_x: string
-  coordinate_y: string
-}
+import { ContainerTable } from '@/components/CustomersTable/styles'
+import { CustomersContext } from '@/context/CustomersContext'
+import { useContext } from 'react'
 
 export function CustomersTable() {
-  const [customers, setCustomers] = useState<Customer[]>([])
-
-  useEffect(() => {
-    async function fetchCustomers() {
-      try {
-        const response = await api.get('/customers')
-        setCustomers(response.data.customers)
-      } catch (error) {
-        console.error('Falha ao buscar clientes:', error)
-      }
-    }
-
-    fetchCustomers()
-  }, [])
+  const { customers } = useContext(CustomersContext)
 
   return (
     <ContainerTable>
