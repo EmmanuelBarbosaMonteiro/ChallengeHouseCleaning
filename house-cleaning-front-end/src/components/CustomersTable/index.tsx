@@ -1,3 +1,4 @@
+import { api } from '@/services/api'
 import { ContainerTable } from '@/styles/components/customers-table'
 import React, { useState, useEffect } from 'react'
 
@@ -16,9 +17,8 @@ export function CustomersTable() {
   useEffect(() => {
     async function fetchCustomers() {
       try {
-        const response = await fetch('http://localhost:3333/customers')
-        const data = await response.json()
-        setCustomers(data.customers)
+        const response = await api.get('/customers')
+        setCustomers(response.data.customers)
       } catch (error) {
         console.error('Falha ao buscar clientes:', error)
       }
