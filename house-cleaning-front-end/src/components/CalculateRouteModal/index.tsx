@@ -79,7 +79,7 @@ export function CalculateRouteModal({
               ))
             ) : (
               <tr>
-                <td colSpan={2}>Carregando dados...</td>
+                <td colSpan={2}>Não há clientes cadastrados.</td>
               </tr>
             )}
           </tbody>

@@ -3,6 +3,7 @@ import { ContainerNewCustomerModal } from './styles'
 import { X } from 'lucide-react'
 import { FormEvent, useState, useContext } from 'react'
 import { CustomersContext } from '@/context/CustomersContext'
+import InputMask from 'react-input-mask'
 
 interface NewCustomerModalProps {
   isOpen: boolean
@@ -63,6 +64,9 @@ export function NewCustomerModal({
           placeholder="Nome"
           value={name}
           onChange={(event) => setName(event.target.value)}
+          max="50"
+          pattern="[A-Za-zÀ-ÿ\s]+"
+          title="Apenas letras e espaços são permitidos."
           required
         />
 
@@ -70,13 +74,16 @@ export function NewCustomerModal({
           placeholder="E-mail"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
+          type="email"
           required
         />
 
-        <input
-          placeholder="Telefone"
+        <InputMask
+          mask="(99) 99999-9999"
           value={phone}
           onChange={(event) => setPhone(event.target.value)}
+          placeholder="Telefone"
+          type="tel"
           required
         />
 
