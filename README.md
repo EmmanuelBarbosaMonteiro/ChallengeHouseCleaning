@@ -45,7 +45,7 @@ Localizado na pasta `HouseCleaningBackEnd`.
 
 1. **Crie o arquivo .env:**
 
-   Duplique `.env.example` renomeando a cópia para `.env`. Modifique as variáveis de ambiente conforme necessário.
+   Duplique `.env.example` renomeando a cópia para `.env`.
 
 2. **Instale as dependências:**
    
