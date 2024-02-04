@@ -54,7 +54,7 @@ Localizado na pasta `HouseCleaningBackEnd`.
    
    docker compose up -d
    
-   npx prisma migrate dev
+   npx prisma migrate dev    //Atenção: Duplique `.env.example` renomeando a cópia para `.env`. A string de conexão está aqui.
    
    npm run start:dev
 
